@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Graphic</title>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Acme&family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
+
+</head>
+
+<body> 
+
+  <div class="field" id="field"></div>
+
+  <div class="road" id="road"></div>
+
+  <div class="clock">
+    <div class="clock-detail" id="clock-item">Clock Detail</div>
+  </div>
+
+  <div class="sun-moon" id="sun-moon"></div>
+
+  <div class="switch-container">
+    <div class="header">Turn on Day/Night</div><br>
+    <label class="switch">
+      <input type="checkbox" id="checkbox" class="checkboxInput" onclick="swap()">
+      <span class="slider round"></span>
+    </label>
+  </div> 
+
+  <div class="cloud-container" >
+    <div class="cloud" id="cloud"></div>
+    <div class="cloud" id="cloud"></div>
+    <div class="cloud" id="cloud"></div>
+    <div class="cloud" id="cloud"></div>
+    <div class="cloud" id="cloud"></div>     
+  </div> 
+    
+  <div id="showcase">
+    <div class="camera">
+      
+      <div class="shadow">
+        <div class="blur"></div>
+      </div>
+      
+      <div class="car" id="car">
+      <!------------- Body ------------>
+        <div class="body">
+          <div class="front">
+            
+            <div class="bumper"></div>
+            <div class="headlight headlight_left" id="eyeleft"></div>
+            <div class="headlight headlight_right" id="eyeright"></div>
+
+            <div class="smile" id="smile"></div>
+
+            <div class="dot"></div>
+
+            <div class="ear ear_left">
+              <div class="inner-ear"></div>
+            </div>
+
+            <div class="ear ear_right">
+              <div class="inner-ear"></div>
+            </div>
+
+            <div class="side side_left" >
+              <div class="line line_top" id="lineCat1"></div>
+              <div class="line line_bottom" id="lineCat2"></div>
+            </div>
+
+            <div class="side side_right">
+              <div class="line line_top" id="lineCat3"></div>
+              <div class="line line_bottom" id="lineCat4"></div>
+            </div>
+                    
+            <div class="bonnet">
+              <div class="texture"></div>
+            </div>
+
+                    
+            <div class="fender fender_left">
+              <div class="panel">
+                <div class="texture"></div>
+              </div>
+            </div>
+
+            <div class="fender fender_right">   
+              <div class="panel">
+                <div class="texture"></div>
+              </div>
+            </div>
+                    
+            <div class="under"></div>
+
+          </div>
+
+          <!------------- ห้องโดยสาร ------------>
+          <div class="cockpit">
+
+            <div class="inner inner_front">
+              <div class="window window_left" id="window1"></div>
+              <div class="window window_right" id="window2"></div>
+            </div>
+
+            <div class="inner inner_back">
+              <div class="window window_back" id="window3"></div>
+            </div>
+
+            <div class="inner inner_top"></div>
+            <div class="inner inner_bottom"></div>
+
+            <div class="inner inner_left">
+              <div class="line"></div>
+              <div class="lineone"></div>
+              <div class="linetwo"></div>
+              <div class="linethree"></div>
+
+              <div class="window window_left" id="window4"></div>
+              <div class="window window_mid" id="window5"></div>
+              <div class="window window_right" id="window6"></div>
+            </div>
+
+            <div class="inner inner_right">
+              <div class="line"></div>
+              <div class="lineone"></div>
+              <div class="linetwo"></div>
+              <div class="linethree"></div>
+      
+              <div class="window window_left" id="window7"></div>
+              <div class="window window_mid" id="window8"></div>
+              <div class="window window_right" id="window9"></div>
+            </div>
+
+            <div class="sign" id="sign"></div>
+            
+          </div>  
+
+      </div>  
+
+        <!-------------- แขนขาแมว ---------------->
+        <div class="legs" id="legs">
+          <div class="leg-front" id="legs-front">
+        
+            <div class="leg-front left"></div>  
+            <div class="leg-front right"></div>
+          
+          </div>
+
+          <div class="leg-back">
+
+            <div class="leg-back left"></div>
+            <div class="leg-back right"></div>
+
+          </div>
+        </div> 
+
+
+
+         <!-------------- ล้อ ---------------->
+        <div class="wheel" id="wheel">
+            <div class="wheel-front" >
+              <div class="wheel-front left" id="wf_left">
+                <div class="inner-wheel"></div>
+              </div>
+              <div class="wheel-front right" id="wf_right">
+                <div class="inner-wheel"></div>
+              </div>
+            </div>
+            
+            <div class="wheel-back">
+              <div class="wheel-back left" id="wb_left">
+                <div class="inner-wheel"></div>
+              </div>
+              <div class="wheel-back right" id="wb_right">
+                <div class="inner-wheel"></div>
+              </div>
+            </div>
+        </div>
+        
+        </div>
+
+      </div>  
+      
+     
+  </div>
+
+  
+  <div id="bird">
+    <div class="bird one" >Z</div>
+    <div class="bird two" >Z</div>
+    <div class="bird three">Z</div>
+  </div>
+  
+</body>
+
+<script src="./app.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"></script>
+
+
+
+</html>

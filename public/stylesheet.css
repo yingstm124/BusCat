@@ -1,0 +1,860 @@
+*{
+  font-family: 'Acme', sans-serif;
+  }
+  body {
+    height: 580px;
+    overflow: hidden;
+    display: flex;
+    font-family: "Anton", sans-serif;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    background: rgb(175, 228, 243) ;
+  }
+  
+  .sun-moon {
+      width: 150px;
+      height: 150px;
+      background-image: linear-gradient(rgb(255, 220, 24),rgb(240, 147, 60)) ;
+      border-radius: 150px;
+      transform: translate(400px, -180px);
+  }
+
+  .clock {
+    width: 600px;
+    height: 80px;
+    font-size: 100px;
+    letter-spacing: 5px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    transform-style: flat;
+    transform-origin: 0% 0%;
+    transform: translate(-35%, -100%);
+  
+  }
+  
+  /* -------------switch เปิด ปิด --------- */
+  .switch-container{
+    width: 300px;
+    height: 51px;
+    position: absolute;
+    display: flexbox;
+    justify-content: center;
+    transform-style: flat;
+    transform: translate(580px, 130px);
+  }
+  .header {
+    margin-bottom: 20px; 
+    font-size: 20px;
+  }
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    height: 51px;
+  }
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .switch input:focus + .slider {
+    box-shadow: 0 0 1px #2196f3;
+  }
+  .switch input:checked + .slider {
+    background-color: #1a3f5d;
+  }
+  .switch input:checked + .slider:before {
+    background-color: #ffe8a3;
+    border-color: #ffe8a3;
+    -webkit-transform: translateX(48px);
+    -ms-transform: translateX(48px);
+    transform: translateX(48px);
+  }
+  .switch input:checked + .slider:after {
+    opacity: 1;
+    -webkit-transform: translateX(46px);
+    -ms-transform: translateX(46px);
+    transform: translateX(46px);
+    background-color: #1a3f5d;
+    transition: 0.4s;
+  }
+  .switch .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #8de0f2;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    border-radius: 34px;
+  }
+  .switch .slider:before {
+    position: absolute;
+    content: "";
+    height: 30px;
+    width: 30px;
+    left: 6px;
+    bottom: 6px;
+    background-color: #f2c230;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    border-radius: 50%;
+    border: 5px solid #f2911b;
+  }
+  .switch .slider:after {
+    position: absolute;
+    content: "";
+    height: 32.5px;
+    width: 35.4545454545px;
+    left: 0px;
+    top: 5px;
+    background-color: #8de0f2 ;
+    border-radius: 50%;
+    opacity: 0;
+  }
+  
+   /* ---------- ก้อนเมฆ ---------*/   
+  .cloud-container {
+    opacity: 0.7;
+    transform: translate(0px, -200px);
+  }
+  .cloud {
+    display: inline-block;
+    vertical-align: top;
+    width: 100px;
+    height: 30px;
+    border-radius: 50px 35px 35px 15px;
+    position: absolute;
+  }
+  .cloud, .cloud:before, .cloud:after {  
+    border-radius: 35px;
+    background: rgb(255, 255, 255) ;
+  }
+  .cloud:before, .cloud:after {
+    content:'';
+    display: block;
+    position: absolute;
+  }
+  .cloud:before {  
+    width: 40px;
+    height: 45px;
+    left: 12px;
+    bottom: 0;
+  }
+  .cloud:after {
+    width: 40px;
+    height: 50px;
+    right: 16px;
+    bottom: 0;
+  }
+  .cloud:nth-child(1){
+    position: absolute;
+    top: 180px;
+    left: -450px;
+  }
+  
+  .cloud:nth-child(2){
+    position: absolute;
+    top: 80px;
+    left: -230px;
+  }
+  
+  .cloud:nth-child(4){
+    position: absolute;
+    top: 50px;
+    left: 230px;
+  }
+  
+  .cloud:nth-child(5) {
+    position: absolute;
+    top: 140px;
+    right: 100px;
+  }
+  .cloud {
+    animation: cloudmove 25s linear infinite backwards;
+  }
+  
+  @keyframes cloudmove {
+    0% { 
+      transform: translateX(-1000px); 
+    }
+    100% { 
+      transform: translateX(1000px);
+    }
+  }
+  /*------------- ทุ่งนา ----------*/
+  .field {
+    width: 100%;
+    height: 300px;
+    position: absolute;
+    transform: translate(0%, 50%);
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/comicstore-bec18.appspot.com/o/%E0%B8%9D%E0%B8%B2%E0%B8%81%E0%B8%A3%E0%B8%B9%E0%B8%9B%2Flol.png?alt=media&token=e3c5de14-d007-4b7f-bcc7-9df80427e91c');
+    background-attachment: fixed;
+    background-position: 0px 100px;
+    background-repeat: repeat;
+    background-size: 100% 580px;
+  
+  }
+  
+  /*------------- ถนน --------------*/
+  .road {
+    width: 100%;
+    height: 300px;
+    position: absolute;
+    transform: translate(0%,100%);
+    clip-path: polygon(0 50%, 100% 20%, 100% 100%, 0% 100%);
+    background: #C5D728 ;
+  }
+  
+  
+  
+  /* ----------bus-cat------------ */
+  
+  div {
+    position: absolute;
+    transform-style: preserve-3d;
+    box-sizing: border-box;
+    transition: 1000ms;
+  }
+    
+  #showcase {
+    pointer-events: none;
+    transform: rotateX(0deg) rotateY(-40deg) rotateZ(0deg);
+  }
+  
+  #showcase .shadow {
+    width: 120px;
+    height: 270px;
+    background: none;
+    transform-origin: 50% 0%;
+    transform: translate(0px, 355px) rotateX(-90deg);
+  }
+  
+  #showcase .shadow .blur {
+    width: 100%;
+    height: 100%;
+    background: #7775757a;
+    filter: blur(40px);
+  }
+  
+  #showcase .car {
+    transform: translate(0px, 300px);
+    /* animation: onsky 5s ease-in-out infinite ; */
+  }
+  @keyframes onsky {
+    0%{
+      transform: translate(-100px, 0px) translateZ(-400px) rotateX(-10deg) rotateZ(2deg);
+    }
+    25% {
+      transform: translate(-100px, 10px) translateZ(-400px) rotateX(-5deg) rotateZ(2deg);
+    }
+    50% {
+      transform: translate(-100px, -10px) translateZ(-400px) rotateX(-10deg) rotateZ(5deg);
+    }
+    75% {
+      transform: translate(-100px, 10px) translateZ(-400px) rotateX(-5deg) rotateZ(2deg);
+    }
+    100% {
+      transform: translate(-100px, 0px) translateZ(-400px) rotateX(-10deg) rotateZ(2deg);
+    }
+
+  }
+  #showcase .car .body {
+    transition: 1000ms;
+  }
+  /* ---------- ส่วนของหน้ามัน ---------*/
+  #showcase .car .body .front {
+    transform: translate(0, 0px);
+  }
+  
+  /* ---------- ฐานตาแมว ---------*/
+  #showcase .car .body .front .bumper {
+    width: 120px;
+    height: 40px;
+    background: rgb(247, 208, 151);
+  }
+  
+  #showcase .car .body .front .bumper::before {
+    content: "";
+    position: absolute;
+    background: rgb(253, 247, 166) ;
+    width: 20px;
+    height: 10px;
+    border-radius: 8px;
+    transform: translate(5px, 5px);
+  }
+  
+  #showcase .car .body .front .bumper::after {
+    content: "";
+    position: absolute;
+    background: rgb(253, 247, 166);
+    width: 20px;
+    height: 10px;
+    border-radius: 8px;
+    transform: translate(95px, 5px);
+  }
+  
+  /* ---------- ลูกตาแมว ---------*/
+  #showcase .car .body .front .headlight {
+    width: 2px;
+    height: 20px;
+    background: black;
+    border-radius: 30px;
+  }
+  #showcase .car .body .front .headlight_left {
+    transform: translate(10px, 0px) rotateZ(-90deg);
+    /* animation: moveeyesleft 4s linear infinite; */
+  }
+  
+  #showcase .car .body .front .headlight_right {
+    transform: translate(100px, 0px) rotateZ(-90deg);;
+    /* animation: moveeyesright 4s linear infinite; */
+  }
+@keyframes moveeyesleft {
+      0% {
+        transform: translate(10px, 5px);
+      }
+      25% {
+        transform: translate(8px, 5px);
+      }
+      50%{
+        transform: translate(10px, 5px);
+      }
+      75%{
+        transform: translate(18px, 5px);
+      }
+      100%{
+        transform: translate(10px, 5px);
+      }
+  }
+@keyframes moveeyesright {
+    0% {
+      transform: translate(100px, 5px);
+    }
+    25% {
+      transform: translate(98px, 5px);
+    }
+    50%{
+      transform: translate(100px, 5px);
+    }
+    75%{
+      transform: translate(108px, 5px);
+    }
+    100%{
+      transform: translate(100px, 5px);
+    }
+}
+  
+  /*------- หูแมว ------------*/
+  #showcase .car .body .front .ear {
+    width: 50px;
+    height: 30px;
+    background: rgb(173, 17, 17);
+  }
+  #showcase .car .body .front .ear .inner-ear{
+    width: 25px;
+    height: 15px;
+    background: rgb(228, 145, 120);
+    transform: translate(50%,50%);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  }
+  
+  #showcase .car .body .front .ear_left {
+    transform: translate(0px, -30px) translateZ(-20px);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  
+  }
+  #showcase .car .body .front .ear_right {
+    transform: translate(70px, -30px) translateZ(-20px);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  
+  }
+
+
+  /*------- จมูกแมว ------------*/
+  #showcase .car .body .front .dot {
+    width: 20px;
+    height: 10px;
+    border-radius: 25px;
+    clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
+    background: rgb(173, 17, 17);
+    transform: translate(50px, 10px);
+    animation: snuff 4s linear infinite;
+  }
+
+  @keyframes snuff {
+      0% {
+        width: 20px;
+        transform: translate(50px, 10px);
+      }
+      25%{
+        width: 20px;
+        transform: translate(50px, 7px);
+      }
+      50%{
+        width: 20px;
+        transform: translate(50px, 8px);
+      }
+      75%{
+        width: 25px;
+        transform: translate(47px, 10px);
+      }
+      100%{
+        width: 20px;
+        transform: translate(50px, 10px);
+      }
+  }
+
+  /*--------- ฟันแมว ------------*/
+  #showcase .car .body .front .smile {
+    width: 100px;
+    height: 18px;
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/comicstore-bec18.appspot.com/o/%E0%B8%9D%E0%B8%B2%E0%B8%81%E0%B8%A3%E0%B8%B9%E0%B8%9B%2FUntitled_Artwork%202.png?alt=media&token=9021a321-961e-48a4-9f38-f991fed18de3');
+    background-size: 100px 18px;
+    border-radius: 20px;
+    transform: translate(10px, 20px);
+  }
+  #showcase .car .body .front .smile .line {
+    width: 2px;
+    height: 18px;
+    background: rgba(71, 68, 68, 0.637);
+  }
+  
+  
+  /*--------------- หนวดแมว ------------*/
+  #showcase .car .body .front .side .line{
+    width: 2px;
+    height: 30px;
+    background: black;
+  }
+  #showcase .car .body .front .side_left .line_top{
+    transform: translate(-10px,0px) rotateZ(90deg);
+  }
+  #showcase .car .body .front .side_left .line_bottom{
+    transform: translate(-10px,5px) rotateZ(90deg);
+  }
+  #showcase .car .body .front .side_right .line_top{
+    transform: translate(130px,0px) rotateZ(90deg);
+  }
+  
+  #showcase .car .body .front .side_right .line_bottom{
+    transform: translate(130px, 5px) rotateZ(90deg);
+  }
+  
+  
+  /*--------- กระโปรงรถแมว -------*/
+  #showcase .car .body .front .bonnet {
+    width: 120px;
+    height: 70px;
+    transform-origin: 50% 0%;
+    transform: translate(0px, 0px) translateZ(-69px) rotateX(90deg);
+    background: rgb(247, 208, 151);
+  }
+  #showcase .car .body .front .bonnet .texture {
+    width: 120px;
+    height: 70px;
+    background: rgb(173, 17, 17);
+    clip-path: polygon(40% 100%, 60% 100%, 100% 0, 0 0);
+  }
+   
+  /*---------------- ข้างตัวรถ ------------*/
+  #showcase .car .body .front .fender {
+      width: 70px;
+      height: 40px;
+      transform-origin: 0% 0%;
+      background: rgb(247, 208, 151);
+  }
+  #showcase .car .body .front .fender .panel {
+      width: 100%;
+      height: 100%;
+  }
+  #showcase .car .body .front .fender_left {
+    transform: translate(0px, 0%) rotateY(90deg);
+  }
+  #showcase .car .body .front .fender_right {
+    transform: translate(120px, 0%) rotateY(90deg);
+  }
+  #showcase .car .body .front .fender .panel .texture {
+    width: 100%;
+    height: 100%;
+    background: rgb(173, 17, 17);
+    clip-path: polygon(0 49%, 100% 100%, 100% 0);
+  }
+  
+  
+  /*----------------- ท้องแมว -------------------------*/
+  #showcase .car .body .front .under {
+      width: 120px;
+      height: 70px;
+      transform-origin: 50% 100%;
+      transform: translate(0, -30px) rotateX(90deg);
+  }
+  
+  /*----------------- ห้องโดยสาร -------------------------*/
+  #showcase .car .body .cockpit .inner {
+    background: rgb(173, 17, 17);
+  }
+  #showcase .car .body .cockpit .inner_front {
+    width: 120px;
+    height: 100px;
+    transform: translate(0px, -60px) translateZ(-70px);
+  }
+  #showcase .car .body .cockpit .inner_back {
+    width: 120px;
+    height: 100px;
+    transform: translate(0px, -60px) translateZ(-270px);
+  }
+  #showcase .car .body .cockpit .inner_left {
+    width: 200px;
+    height: 100px;
+    background:  rgb(247, 208, 151);
+    transform: translate(20px, -60px) translateZ(-170px) rotateY(90deg);
+  }
+  #showcase .car .body .cockpit .inner_right {
+    width: 200px;
+    height: 100px;
+    background:  rgb(247, 208, 151);
+    transform: translate(-100px, -60px) translateZ(-170px) rotateY(90deg);
+  }
+  
+  #showcase .car .body .cockpit .inner_top {
+    width: 120px;
+    height: 200px;
+    transform: translate(0px,-160px) translateZ(-170px) rotateX(90deg);
+  }
+  
+  #showcase .car .body .cockpit .inner_bottom {
+    width: 120px;
+    height: 200px;
+    background: rgb(247, 208, 151);
+    transform: translate(0px,-60px) translateZ(-170px) rotateX(90deg);
+  }
+
+  #showcase .car .body .cockpit .line{
+    width: 100%;
+    height: 60px;
+    transform: translate(0%,0%);
+    background: rgb(173, 17, 17);
+  }
+  
+  /*------------- ป้ายแบบหลังคารถ ----------*/
+  #showcase .car .body .cockpit .sign{
+    width: 60px;
+    height: 20px;
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/comicstore-bec18.appspot.com/o/%E0%B8%9D%E0%B8%B2%E0%B8%81%E0%B8%A3%E0%B8%B9%E0%B8%9B%2Fday.jpg?alt=media&token=5f720cb6-41a7-4f44-ae05-75f9689db07f');
+    /* clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%); */
+    transform: translate(30px, -75px) translateZ(-80px);
+  }
+  
+  /*-------------- ลายพราง --------------*/
+  #showcase .car .body .cockpit .inner .lineone{
+    width: 20px;
+    height: 30px;
+    background: rgb(173, 17, 17);
+    transform: translate(60px,70px);
+    border-radius: 20px 20px 0px 0px;
+  }
+  #showcase .car .body .cockpit .inner .linetwo{
+    width: 20px;
+    height: 30px;
+    background: rgb(173, 17, 17);
+    transform: translate(90px,70px);
+    border-radius: 20px 20px 0px 0px;
+  }
+  #showcase .car .body .cockpit .inner .linethree{
+    width: 20px;
+    height: 30px;
+    background: rgb(173, 17, 17);
+    transform: translate(120px,70px);
+    border-radius: 20px 20px 0px 0px;
+  }
+  
+  
+  /*------------- หน้าต่างรถ ----------*/
+  #showcase .car .body .cockpit .inner .window {
+    background: rgb(206, 210, 212) ;
+    opacity: 0.8;
+  }
+  #showcase .car .body .cockpit .inner_front .window_left {
+    width: 45px;
+    height: 40px;
+    transform: translate(15%,15%);
+    border-radius: 20px 20px 10px 10px;
+  }
+  #showcase .car .body .cockpit .inner_front .window_right {
+    width: 45px;
+    height: 40px;
+    transform: translate(145%,15%);
+    border-radius: 20px 20px 10px 10px;
+  }
+  
+  #showcase .car .body .cockpit .inner_back .window_back{
+    width: 80px;
+    height: 30px;
+    transform: translate(25%,40%);
+    border-radius: 20px 20px 10px 10px;
+  
+  }
+  
+  #showcase .car .body .cockpit .inner_left .window_left {
+    width: 45px;
+    height: 40px;
+    transform: translate(15px,15%);
+    border-radius: 20px 20px 0px 0px;
+  }
+  
+  #showcase .car .body .cockpit .inner_left .window_mid {
+    width: 45px;
+    height: 40px;
+    transform: translate(80px,15%);
+    border-radius: 20px 20px 0px 0px;
+  }
+  #showcase .car .body .cockpit .inner_left .window_right {
+    width: 45px;
+    height: 40px;
+    transform: translate(145px,15%);
+    border-radius: 20px 20px 0px 0px;
+  }
+  
+
+  
+  #showcase .car .body .cockpit .inner_right .window_left {
+    width: 45px;
+    height: 40px;
+    background: rgb(255, 237, 237);
+    transform: translate(15px,15%);
+    border-radius: 20px 20px 0px 0px;
+  }
+  
+  #showcase .car .body .cockpit .inner_right .window_mid {
+    width: 45px;
+    height: 40px;
+    background: rgb(255, 237, 237);
+    transform: translate(80px,15%);
+    border-radius: 20px 20px 0px 0px;
+  }
+  #showcase .car .body .cockpit .inner_right .window_right {
+    width: 45px;
+    height: 40px;
+    background: rgb(255, 237, 237);
+    transform: translate(145px,15%);
+    border-radius: 20px 20px 0px 0px;
+  }
+  
+  /*--------------- ล้อ -----------*/
+    .wheel {
+    display: inline-block;
+}
+  .inner-wheel {
+    width: 70%;
+    height: 70%;
+    border-radius: 70%;
+    background: rgb(255, 249, 249);
+    transform: translate(30%, 30%);
+  }
+  
+  .wheel .wheel-front .left {
+    width: 50px;
+    height: 50px;
+    background: rgb(94, 15, 9);
+    border-radius: 50px;
+    transform: translate(-30px, 10px) translateZ(-70px) rotateY(90deg);
+    /* animation: frontLeft 5s linear infinite; */
+  }
+
+  @keyframes frontLeft {
+    0% {
+        transform: translate(-30px, 10px) translateZ(-70px) rotateX(0deg) rotateY(90deg) ;
+    }
+    25%{
+        transform: translate(-30px, 10px) translateZ(-70px) rotateX(90deg) rotateY(90deg) ;
+    }
+    50%{
+        transform: translate(-30px, 15px) translateZ(-70px) rotateX(90deg) ;
+    }
+    100%{
+        transform: translate(30px, 15px) translateZ(-70px) rotateX(90deg)  ;
+    }
+  }
+
+  .wheel .wheel-front .right{
+    width: 50px;
+    height: 50px;
+    background: rgb(94, 15, 9);
+    border-radius: 50px;
+    transform: translate(100px, 10px) translateZ(-70px) rotateY(90deg);
+    /* animation: frontRight 5s linear infinite ; */
+  }
+
+  @keyframes frontRight {
+    0% {
+        transform: translate(100px, 10px) translateZ(-70px) rotateX(-90deg) rotateY(90deg) ;
+    }
+    25%{
+        translate: translate(100px, 10px) translateZ(-70px) rotateX(-90deg) rotateY(0deg) ;
+    }
+    50%{
+        transform: translate(100px, 15px) translateZ(-70px) rotateX(-90deg) rotateY(0deg);
+    }
+    100%{
+        transform: translate(50px, 15px) translateZ(-70px) rotateX(-90deg) rotateY(0deg);
+    }
+  }
+
+  .wheel .wheel-back .left {
+    width: 50px;
+    height: 50px;
+    background: rgb(94, 15, 9);
+    border-radius: 50px;
+    transform: translate(-30px, 10px) translateZ(-240px) rotateY(90deg);
+    /* animation: backLeft 5s linear infinite ; */
+  }
+
+  @keyframes backLeft {
+    0% {
+        transform: translate(-30px, 10px) translateZ(-240px) rotateX(0deg) rotateY(90deg) ;
+    }
+    25%{
+        transform: translate(-30px, 10px) translateZ(-240px) rotateX(90deg) rotateY(90deg) ;
+    }
+    50%{
+        transform: translate(-30px, 15px) translateZ(-240px) rotateX(90deg) ;
+    }
+    100%{
+        transform: translate(30px, 15px) translateZ(-240px) rotateX(90deg)  ;
+    }
+  }
+
+  .wheel .wheel-back .right {
+    width: 50px;
+    height: 50px;
+    background: rgb(94, 15, 9);
+    border-radius: 50px;
+    transform: translate(100px, 10px) translateZ(-240px) rotateY(90deg);
+    /* animation: backRight 5s linear infinite ; */
+  }
+  @keyframes backRight {
+    0% {
+        transform: translate(100px, 10px) translateZ(-240px) rotateX(-90deg) rotateY(90deg) ;
+    }
+    25%{
+        translate: translate(100px, 10px) translateZ(-240px) rotateX(-90deg) rotateY(0deg) ;
+    }
+    50%{
+        transform: translate(100px, 15px) translateZ(-240px) rotateX(-90deg) rotateY(0deg);
+    }
+    100%{
+        transform: translate(50px, 15px) translateZ(-240px) rotateX(-90deg) rotateY(0deg);
+    }
+  }
+  
+  /*-------------- แขน ขา แมว ------------*/
+  #showcase .car .legs {
+    display: none;
+    transition: display 10s;
+    /* animation: displayLegs 5s linear infinite ; */
+  }
+
+  @keyframes displayLegs {
+      0%{
+        display: none;
+      }
+      25%{
+        display: none;
+      }
+      50%{
+        display: none;
+      }
+      75%{
+        display: inline-block;
+      }
+      100% {
+        display: inline-block;
+      }
+  }
+  #showcase .car .legs .leg-front .left{
+    width: 40px;
+    height: 70px;
+    background: rgb(247, 208, 151);
+    transform: translate(5px, 3px) translateZ(10px) rotateX(-90deg);
+    border-radius: 50px 50px 0px 0px;
+    animation: moveleg 5s linear infinite;
+  }
+  #showcase .car .legs .leg-front .right {
+    width: 40px;
+    height: 70px;
+    background: rgb(247, 208, 151);
+    transform: translate(75px, 3px) translateZ(10px) rotateX(-90deg);
+    border-radius: 50px 50px 0px 0px;
+    animation: moveleg 5s linear infinite;
+  }
+  
+  #showcase .car .legs .leg-back .left{
+    width: 40px;
+    height: 70px;
+    background: rgb(247, 208, 151) ;
+    transform: translate(5px, 3px) translateZ(-300px) rotateX(90deg);
+    border-radius: 50px 50px 0px 0px;
+    animation: moveleg 5s linear infinite;
+  }
+  #showcase .car .legs .leg-back .right{
+    width: 40px;
+    height: 70px;
+    background: rgb(247, 208, 151);
+    transform: translate(75px, 3px) translateZ(-300px) rotateX(90deg);
+    border-radius: 50px 50px 0px 0px;
+    
+  }
+
+ 
+  
+.one {
+    width: 20px;
+    height: 20px;
+
+    border-radius: 0px 0px 0px 0px ;
+    transform: translate(0px ,200px);
+    animation: sleep 4s linear infinite;
+}
+.two {
+
+    animation: sleep 4s linear infinite;
+    animation-delay: 1s;
+}
+.three {
+
+    animation: sleep 4s linear infinite;
+    animation-delay: 2s;
+}
+
+@keyframes sleep {
+    0% {
+        display: inline-block;
+        transform: translate(0px ,200px);
+    }
+    25% {
+        display: inline-block;
+        transform: translate(-75px ,205px) translateZ(5px) rotateZ(90deg);
+    }
+    50%{
+        display: inline-block;
+        transform: translate(-100px ,210px) translateZ(10px) rotateZ(180deg);
+    }
+    75%{
+        display: inline-block;
+        transform: translate(-75px ,205px) translateZ(5px) rotateZ(270deg);
+    }
+    100%{
+        display: inline-block;
+        transform: translate(0px ,200px) rotateX(360deg);
+    }
+}
+  
+  
